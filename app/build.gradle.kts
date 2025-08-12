@@ -56,4 +56,11 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation("dev.chrisbanes.haze:haze-jetpack-compose:0.4.1")
+
+    implementation("androidx.compose.material:material-icons-extended")
+
+
+    implementation(libs.androidx.navigation.compose)
 }
