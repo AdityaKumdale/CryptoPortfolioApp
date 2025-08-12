@@ -1,6 +1,13 @@
 # CryptoPortfolioApp
 A crypto portfolio and exchange app
 
+##Video
+
+
+https://github.com/user-attachments/assets/1b6d1afd-dbfa-4252-b996-a93a5bcbd9b9
+
+
+
 ## Build and Setup Instructions:
 1.Clone the repository:
 git clone https://github.com/AdityaKumdale/CryptoPortfolioApp.git
