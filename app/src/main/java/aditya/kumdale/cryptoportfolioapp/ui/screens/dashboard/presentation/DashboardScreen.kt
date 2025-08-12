@@ -1,6 +1,7 @@
 package aditya.kumdale.cryptoportfolioapp.ui.screens.dashboard.presentation
 
 
+import aditya.kumdale.cryptoportfolioapp.R
 import aditya.kumdale.cryptoportfolioapp.ui.screens.dashboard.components.AnalyticsScreen
 import aditya.kumdale.cryptoportfolioapp.ui.screens.dashboard.components.AppBottomBar
 import aditya.kumdale.cryptoportfolioapp.ui.screens.exchange.presentation.ExchangeScreenRoute
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -27,6 +29,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
@@ -61,9 +64,9 @@ fun HomeScaffold() {
                         onClick = { /* TODO: Handle FAB click */ },
                         shape = CircleShape,
                         containerColor = Color.White,
-                        contentColor = Color.Black
+                        contentColor = Color.Blue
                     ) {
-                        Icon(Icons.Filled.Add, contentDescription = "Add Transaction")
+                        Icon(Icons.Filled.Add, contentDescription = "Add Transaction", modifier = Modifier.size(27.dp) )
                     }
                 }
             }

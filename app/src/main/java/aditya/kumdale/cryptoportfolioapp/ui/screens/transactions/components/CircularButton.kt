@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowDownward
+import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Icon
@@ -75,7 +77,7 @@ fun ActionButtonGroup() {
         modifier = Modifier.padding(16.dp),
     ) {
         CircularButton(
-            icon = Icons.Default.KeyboardArrowUp,
+            icon = Icons.Default.ArrowUpward,
             contentDescription = "Up",
             onClick = {
                 // TODO: Handle 'Up' action
@@ -89,7 +91,7 @@ fun ActionButtonGroup() {
             }
         )
         CircularButton(
-            icon = Icons.Default.KeyboardArrowDown,
+            icon = Icons.Default.ArrowDownward,
             contentDescription = "Down",
             onClick = {
                 // TODO: Handle 'Down' action

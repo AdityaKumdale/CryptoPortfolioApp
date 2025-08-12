@@ -41,7 +41,7 @@ fun RecentTransactionsList(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 0.dp, vertical = 20.dp),
+                .padding(horizontal = 0.dp, vertical = 0.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -50,14 +50,14 @@ fun RecentTransactionsList(
                 color = Color.White,
                 fontSize = 14.sp,
 
-                modifier = Modifier.padding(vertical = 16.dp)
+                modifier = Modifier.padding(vertical = 1.dp)
             )
             Text(
                 text = endString,
                 color = Color.White,
                 fontSize = 14.sp,
 
-                modifier = Modifier.padding(vertical = 16.dp)
+                modifier = Modifier.padding(vertical = 9.dp)
             )
         }
 

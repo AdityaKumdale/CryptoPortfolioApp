@@ -1,5 +1,6 @@
 package aditya.kumdale.cryptoportfolioapp.ui.screens.dashboard.components
 
+import aditya.kumdale.cryptoportfolioapp.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -17,11 +18,9 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.ArrowForwardIos
+import androidx.compose.material.icons.filled.CurrencyBitcoin
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.outlined.Build
-import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -34,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -71,7 +71,7 @@ fun PortfolioCard4(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(Icons.Default.Menu, contentDescription = null, tint = Color.White)
-                Icon(Icons.Outlined.Notifications, contentDescription = null, tint = Color.White)
+                Icon(painterResource(id = R.drawable.notif), contentDescription = null, tint = Color.White)
             }
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -79,7 +79,6 @@ fun PortfolioCard4(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
-                //horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
@@ -124,7 +123,7 @@ fun PortfolioCard4(
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
-                            Icons.Outlined.Build,
+                            painter = painterResource(id = R.drawable.money) ,
                             contentDescription = "Show Balance",
                             tint = Color.White,
                             modifier = Modifier.size(46.dp)
@@ -142,7 +141,7 @@ fun PortfolioCard4(
                             .padding(6.dp)
                     ) {
                         Icon(
-                            Icons.Default.AccountCircle,
+                            Icons.Default.CurrencyBitcoin,
                             contentDescription = "Hide Balance",
                             tint = Color.White,
                             modifier = Modifier.size(46.dp)
@@ -152,7 +151,7 @@ fun PortfolioCard4(
             }
             Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = if (isBalanceVisible) "₹ 1,57,342.05" else "₹ ********",
+                text = if (isBalanceVisible) "₹ 1,57,342.05" else "₿ 0.015",
                 color = Color.White,
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Bold

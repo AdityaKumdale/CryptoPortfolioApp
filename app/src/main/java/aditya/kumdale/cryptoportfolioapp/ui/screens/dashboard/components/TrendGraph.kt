@@ -1,5 +1,8 @@
 package aditya.kumdale.cryptoportfolioapp.ui.screens.dashboard.components
 
+import aditya.kumdale.cryptoportfolioapp.data.formatCurrency
+import aditya.kumdale.cryptoportfolioapp.data.formatDate
+import aditya.kumdale.cryptoportfolioapp.data.generateMockPortfolioData
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
@@ -41,12 +44,7 @@ import kotlin.random.Random
 
 
 
-/**
- * Represents a single data point in the portfolio graph.
- * @param timestamp The time of this data point (in milliseconds).
- * @param value The portfolio value at this time.
- */
-data class PortfolioDataPoint(val timestamp: Long, val value: Float)
+
 
 
 
@@ -128,14 +126,14 @@ fun CryptoGraph(
     var touchX by remember { mutableStateOf<Float?>(null) }
     var canvasSize by remember { mutableStateOf(IntSize.Zero) }
 
-    // Animation for the graph line drawing effect
+
     val animationProgress = remember { Animatable(0f) }
     LaunchedEffect(data) {
         animationProgress.snapTo(0f)
         animationProgress.animateTo(1f, animationSpec = tween(durationMillis = 1000))
     }
 
-    // Text measurer for drawing text on canvas
+
     val textMeasurer = rememberTextMeasurer()
     val density = LocalDensity.current
 
@@ -185,7 +183,13 @@ fun CryptoGraph(
         val barWidth = size.width / (points.size * 2)
         points.forEach { point ->
             drawRect(
-                color = Color.Gray.copy(alpha = 0.1f),
+
+                brush = Brush.verticalGradient(
+                    colors = listOf( Color.Gray, Color.Black.copy(alpha = 0.1f)),
+//                    startY = point.y, // Start the green at the top of the bar
+//                    endY = size.height // Fade to gray at the bottom of the bar
+                ),
+
                 topLeft = Offset(point.x - barWidth / 2, point.y),
                 size = androidx.compose.ui.geometry.Size(barWidth, size.height - point.y)
             )
@@ -198,7 +202,7 @@ fun CryptoGraph(
                 for (i in 0 until points.size - 1) {
                     val p1 = points[i]
                     val p2 = points[i + 1]
-                    // Use quadratic Bezier for a smoother curve
+
                     val controlPoint = Offset((p1.x + p2.x) / 2, p1.y)
                     quadraticBezierTo(controlPoint.x, controlPoint.y, p2.x, p2.y)
                 }
@@ -214,10 +218,11 @@ fun CryptoGraph(
         // fading graph line
         drawPath(
             path = animatedPath,
-            brush = Brush.horizontalGradient(
+           // color = Color(0xFF23E89E),
+            brush = Brush.verticalGradient(
                 colors = listOf(Color(0xFF23E89E), Color.Black),
-                startX = 0f,
-                endX = size.width
+//                startX = 0f,
+//                endX = size.height
             ),
             style = Stroke(width = 4.dp.toPx(), cap = StrokeCap.Round)
         )
@@ -284,6 +289,13 @@ fun CryptoGraph(
     }
 }
 
+/**
+ * Represents a single data point in the portfolio graph.
+ * @param timestamp The time of this data point (in milliseconds).
+ * @param value The portfolio value at this time.
+ */
+data class PortfolioDataPoint(val timestamp: Long, val value: Float)
+
 
 @Preview(showBackground = true,)
 @Composable
@@ -294,48 +306,3 @@ fun GraphTestScreenPreview() {
 }
 
 
-
-/**
- * Generates random portfolio data for different timeframes.
- */
-fun generateMockPortfolioData(timeframe: String): List<PortfolioDataPoint> {
-    val random = Random(System.currentTimeMillis())
-    val now = System.currentTimeMillis()
-    val (points, hours) = when (timeframe) {
-        "1h" -> 60 to 1L
-        "8h" -> 60 to 8L
-        "1d" -> 48 to 24L
-        "1w" -> 7 * 24 to 7 * 24L
-        "1m" -> 30 * 12 to 30 * 24L
-        "6m" -> 180 * 4 to 180 * 24L
-        "1y" -> 365 to 365 * 24L
-        else -> 30 to 24L
-    }
-
-    val timeStep = (hours * 60 * 60 * 1000) / points
-    var currentValue = 140000f + random.nextInt(-10000, 10000)
-
-    return (0 until points).map { i ->
-        val timestamp = now - (points - 1 - i) * timeStep
-        currentValue += random.nextFloat() * 4000f - 2000f
-        PortfolioDataPoint(timestamp, currentValue.coerceAtLeast(50000f))
-    }
-}
-
-/**
- * Formats a timestamp into a date string (e.g., "24 March").
- */
-private fun formatDate(timestamp: Long): String {
-    val date = Date(timestamp)
-    val format = SimpleDateFormat("d MMMM", Locale.getDefault())
-    return format.format(date)
-}
-
-/**
- * Formats a float value into a currency string (e.g., "₹1,42,340").
- */
-private fun formatCurrency(value: Float): String {
-    val format = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
-    format.maximumFractionDigits = 0
-    return format.format(value.roundToInt())
-}

@@ -24,12 +24,12 @@ fun AnalyticsScreen() {
         RecentTransactionsList(
             "Recent Transactions", ""
         )
-        Spacer(modifier = Modifier.height(100.dp))
+        Spacer(modifier = Modifier.height(200.dp))
     }
 }
 
 
-@Preview(showBackground = true)
+@Preview()
 @Composable
 fun AnalyticsScreenPreview() {
     AnalyticsScreen()

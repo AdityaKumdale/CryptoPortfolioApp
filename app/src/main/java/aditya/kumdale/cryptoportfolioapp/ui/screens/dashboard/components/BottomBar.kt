@@ -1,5 +1,6 @@
 package aditya.kumdale.cryptoportfolioapp.ui.screens.dashboard.components
 
+import aditya.kumdale.cryptoportfolioapp.R
 import aditya.kumdale.cryptoportfolioapp.navigation.Dashboard_ROUTE
 import aditya.kumdale.cryptoportfolioapp.navigation.Exchange_ROUTE
 import aditya.kumdale.cryptoportfolioapp.navigation.Transactions_ROUTE
@@ -30,7 +31,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -43,11 +46,6 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 
 
-data class BottomNavItem(
-    val label: String,
-    val icon: ImageVector,
-    val route: String,
-)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -56,10 +54,10 @@ fun AppBottomBar(
     modifier: Modifier = Modifier
 ) {
     val navItems = listOf(
-        BottomNavItem("Analytics", Icons.Outlined.Home, Dashboard_ROUTE),
-        BottomNavItem("Exchange", Icons.Outlined.Home, Exchange_ROUTE),
-        BottomNavItem("Record", Icons.Outlined.Home, Transactions_ROUTE),
-        BottomNavItem("Wallet", Icons.Outlined.Home, Wallet_ROUTE)
+        BottomNavItem("Analytics", painterResource(id = R.drawable.chartline), Dashboard_ROUTE),
+        BottomNavItem("Exchange", painterResource(id = R.drawable.arrowscounterclockwise), Exchange_ROUTE),
+        BottomNavItem("Record", painterResource(id = R.drawable.projectorscreenchart), Transactions_ROUTE),
+        BottomNavItem("Wallet", painterResource(id = R.drawable.wallet), Wallet_ROUTE)
     )
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -124,7 +122,7 @@ fun AppBottomBar(
                             unselectedContentColor = Color.Gray,
                             icon = {
                                 Icon(
-                                    imageVector = item.icon,
+                                    item.icon,
                                     contentDescription = "${item.label} Icon",
                                     modifier = Modifier.size(24.dp)
                                 )
@@ -144,6 +142,13 @@ fun AppBottomBar(
         }
     }
 }
+
+data class BottomNavItem(
+    val label: String,
+    val icon: Painter,
+    val route: String,
+)
+
 
 @Preview(showBackground = true, backgroundColor = 0xFF000033)
 @Composable

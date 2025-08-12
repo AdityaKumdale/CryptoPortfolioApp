@@ -1,15 +1,17 @@
 package aditya.kumdale.cryptoportfolioapp.ui.screens.transactions.presentation
 
+import aditya.kumdale.cryptoportfolioapp.data.mockPortfolioSummary
 import aditya.kumdale.cryptoportfolioapp.ui.screens.dashboard.components.RecentTransactionsList
 import aditya.kumdale.cryptoportfolioapp.ui.screens.transactions.components.ActionButtonGroup
 import aditya.kumdale.cryptoportfolioapp.ui.screens.transactions.components.PortfolioCard
-import aditya.kumdale.cryptoportfolioapp.ui.screens.transactions.components.mockPortfolioSummary
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -44,7 +46,7 @@ fun TransactionsScreen(
             .verticalScroll(rememberScrollState())
     ) {
         Column(
-            modifier = Modifier.align(Alignment.CenterHorizontally)
+            modifier = Modifier.align(Alignment.CenterHorizontally).padding(vertical = 25.dp)
 
         ) {
             Row(
@@ -75,6 +77,8 @@ fun TransactionsScreen(
                 "Transactions",
                 "Last 4 days"
             )
+
+            Spacer(modifier = Modifier.height(200.dp))
 
 
         }

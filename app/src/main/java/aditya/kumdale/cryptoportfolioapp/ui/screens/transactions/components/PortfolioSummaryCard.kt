@@ -1,5 +1,12 @@
 package aditya.kumdale.cryptoportfolioapp.ui.screens.transactions.components
 
+import aditya.kumdale.cryptoportfolioapp.data.PortfolioSummary
+import aditya.kumdale.cryptoportfolioapp.data.mockPortfolioSummary
+import aditya.kumdale.cryptoportfolioapp.ui.theme.cardGradient
+import aditya.kumdale.cryptoportfolioapp.ui.theme.negativeChangeColor
+import aditya.kumdale.cryptoportfolioapp.ui.theme.positiveChangeColor
+import aditya.kumdale.cryptoportfolioapp.ui.theme.stackLayer1Color
+import aditya.kumdale.cryptoportfolioapp.ui.theme.stackLayer2Color
 import androidx.compose.ui.graphics.Color
 
 import androidx.compose.foundation.background
@@ -19,35 +26,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 
-private val cardGradient = Brush.verticalGradient(
-    colors = listOf(Color(0xFF6A5AE0), Color(0xFF4E409A))
-)
-private val positiveChangeColor = Color(0xFF00C853)
-private val negativeChangeColor = Color(0xFFD50000)
-private val stackLayer1Color = Color(0xFF4A3A99).copy(alpha = 0.7f)
-private val stackLayer2Color = Color(0xFF4A3A99).copy(alpha = 0.5f)
 
-/**
- * Data class representing the portfolio summary.
- *
- * @param totalValue The main balance string.
- * @param currency The currency code (e.g., "INR").
- * @param dailyChangeAbsolute The absolute change in value as a string (e.g., "1,342").
- * @param dailyChangePercentage The percentage change. Positive for gain, negative for loss.
- */
-data class PortfolioSummary(
-    val totalValue: String,
-    val currency: String,
-    val dailyChangeAbsolute: String,
-    val dailyChangePercentage: Double
-)
 
-val mockPortfolioSummary = PortfolioSummary(
-    totalValue = "1,57,342.05",
-    currency = "INR",
-    dailyChangeAbsolute = "1,342",
-    dailyChangePercentage = 4.6
-)
 
 
 @Composable
@@ -68,7 +48,7 @@ fun PortfolioCard(summary: PortfolioSummary) {
             modifier = Modifier
                 .align(Alignment.BottomCenter)
 
-                .width(340.dp)
+                .width(350.dp)
                 .height(180.dp)
                 .offset(y = 10.dp)
                 .clip(RoundedCornerShape(24.dp))
@@ -79,8 +59,7 @@ fun PortfolioCard(summary: PortfolioSummary) {
         Box(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-
-                .width(350.dp)
+                .width(360.dp)
                 .height(185.dp)
                 .offset(y = 5.dp)
                 .clip(RoundedCornerShape(24.dp))
