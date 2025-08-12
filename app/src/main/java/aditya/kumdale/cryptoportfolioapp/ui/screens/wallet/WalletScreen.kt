@@ -23,6 +23,6 @@ fun WalletScreen(
 
 ){
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text("Hello Wallet")
+        Text("Feature coming soon...")
     }
 }

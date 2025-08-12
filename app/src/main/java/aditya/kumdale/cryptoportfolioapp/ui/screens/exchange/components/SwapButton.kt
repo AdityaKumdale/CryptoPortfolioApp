@@ -20,77 +20,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-///**
-// * A custom IconButton styled to match the provided image.
-// * It features a dark background, a light border, and rounded corners.
-// *
-// * @param onClick The lambda to be executed when the button is clicked.
-// */
-//@Composable
-//fun SwapButton(onClick: () -> Unit) {
-//    // Define custom colors for better visual appeal
-//    val buttonBackgroundColor = Color(0xFF2C2C2E) // A dark charcoal color
-//    val buttonBorderColor = Color(0xFF4A4A4C)   // A subtle gray for the border
-//    val iconColor = Color.White
-//
-//    // Define the shape with a corner radius
-//    val buttonShape = RoundedCornerShape(16.dp)
-//
-//    IconButton(
-//        onClick = onClick,
-//        modifier = Modifier
-//            .size(64.dp) // Sets a fixed size for the button
-//            // First, apply the border. The border will be drawn outside the background.
-//            .border(
-//                width = 1.dp,
-//                color = buttonBorderColor,
-//                shape = buttonShape
-//            )
-//            // Then, apply padding to create space between the border and the background.
-//            // This makes the border appear more distinct.
-//            .padding(1.dp)
-//            // Clip the content to the button's shape
-//            .clip(buttonShape)
-//            // Finally, set the background color
-//            .background(buttonBackgroundColor)
-//    ) {
-//        Icon(
-//            imageVector = Icons.Default.SwapVert,
-//            contentDescription = "Swap Vertically", // Important for accessibility
-//            tint = iconColor,
-//            modifier = Modifier.size(32.dp) // Adjust icon size as needed
-//        )
-//    }
-//}
-//
-///**
-// * A preview function to display the SwapButton in Android Studio's preview pane.
-// * It's wrapped in a Box to provide a contrasting background.
-// */
-//@Preview(showBackground = true, )
-//@Composable
-//fun SwapButtonPreview() {
-//    Box(
-//        modifier = Modifier
-//            .fillMaxSize()
-//            .padding(20.dp),
-//        contentAlignment = Alignment.Center
-//    ) {
-//        Box(
-//            modifier = Modifier
-//                .fillMaxSize()
-//                .padding(20.dp),
-//            contentAlignment = Alignment.Center
-//        ) {
-//            SwapButton(onClick = {
-//                // This is a placeholder for the click action.
-//                // In a real app, you would put your logic here.
-//                println("Swap Button Clicked!")
-//            })
-//        }
-//    }
-//}
-
 @Composable
 fun SwapButton(onClick: () -> Unit) {
 
@@ -137,10 +66,7 @@ fun SwapButton(onClick: () -> Unit) {
     }
 }
 
-/**
- * A preview function to display the SwapButton in Android Studio's preview pane.
- * It's wrapped in a Box to provide a contrasting background.
- */
+
 @Preview(showBackground = true, backgroundColor = 0xFF1C1C1E)
 @Composable
 fun SwapButtonPreview() {
@@ -151,8 +77,6 @@ fun SwapButtonPreview() {
         contentAlignment = Alignment.Center
     ) {
         SwapButton(onClick = {
-            // This is a placeholder for the click action.
-            // In a real app, you would put your logic here.
             println("Swap Button Clicked!")
         })
     }
